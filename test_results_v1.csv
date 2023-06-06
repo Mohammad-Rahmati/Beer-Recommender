@@ -1,0 +1,101 @@
+,Example,Edge_Case,Output
+0,"""Find a beer with ABV greater than 8%.""",,{'abv_gt': 8}
+1,"""I want a beer brewed before 10-2010.""",,{'brewed_before': '10-2010'}
+2,"""I'm looking for beers with ABV less than 5% and brewed after 01-2015.""",,"{'abv_lt': 5, 'brewed_after': '01-2015'}"
+3,"""Give me a beer that contains the yeast Saccharomyces Pastorianus.""",,{}
+4,"""I want a beer with IBU greater than 40 and malt Maris Otter Extra Pale.""",,{'ibu_gt': 40}
+5,"""Find a beer brewed after 01-2012 with ABV less than 5%.""",,"{'brewed_after': '01-2012', 'abv_lt': 5}"
+6,"""I want a beer with ABV greater than 6%, brewed before 05-2015, and made with Simcoe hops.""",,"{'abv_gt': 6, 'brewed_before': '05-2015'}"
+7,"""Find a beer that matches the name Punk IPA.""",,{}
+8,"""Give me a beer brewed after 01-2015 with yeast Brettanomyces.""",,{'brewed_after': '01-2015'}
+9,"""Find a beer that pairs well with beef stew.""",,{}
+10,"""I want a beer that has an ABV greater than 7%, IBU less than 60, and made with Citra hops.""",,"{'abv_gt': 7, 'ibu_lt': 60}"
+11,"""I'm looking for a beer with ABV less than 5%, EBC greater than 30, and malt Extra Pale.""",,"{'abv_lt': 5, 'ebc_gt': 30}"
+12,"""Give me a beer with yeast Brettanomyces and made with Cascade hops.""",,{}
+13,"""I'm looking for beers that match the name Dogfight and were brewed before 05-2016.""",,{'brewed_before': '05-2016'}
+14,"""I want a beer with ABV greater than 6%, EBC less than 50, and that pairs well with grilled chicken.""",,"{'abv_gt': 6, 'ebc_lt': 50}"
+15,"""Find a beer that has an IBU greater than 60 and matches the name Hop Bomb.""",,"{'ibu_gt': 60, 'beer_name': 'Hop Bomb'}"
+16,"""I want a beer with yeast Saccharomyces and made with Centennial hops.""",,{}
+17,"""I'm looking for a beer that pairs well with beef tartare and was brewed after 01-2016.""",,
+18,"""Give me a beer with an ABV less than 4% and a name that matches Session.""",,{'abv_lt': 4}
+19,"""I want a beer that has an EBC greater than 20 and pairs well with spicy chicken.""",,{'ebc_gt': 20}
+20,"""Find me a beer that has an ABV greater than 7%, was brewed before 05-2015, and made with Magnum hops.""",,"{'abv_gt': 7, 'brewed_before': '05-2015'}"
+21,"""I'm looking for a beer with yeast Fermentis US-05 and a name that matches Pale Ale.""",,{}
+22,"""Give me a beer with an IBU less than 40 and malt Maris Otter.""",,{'ibu_lt': 40}
+23,"""I want a beer that was brewed after 01-2017 and matches the name New England IPA.""",,"{'brewed_after': '01-2017', 'beer_name': 'New England IPA'}"
+24,"""Find me a beer with an EBC less than 30 and that pairs well with roasted vegetables.""",,{'ebc_lt': 30}
+25,"""I want a beer that has an ABV greater than 8%, IBU greater than 60, and was brewed before 10-2013.""",,"{'abv_gt': 8, 'ibu_gt': 60, 'brewed_before': '10-2013'}"
+26,"""I'm looking for a beer with yeast Saccharomyces Pastorianus, made with Cascade hops, and pairs well with smoked salmon.""",,{}
+27,"""Give me a beer with an ABV less than 5%, IBU less than 40, and brewed after 01-2018.""",,"{'abv_lt': 5, 'ibu_lt': 40, 'brewed_after': '01-2018'}"
+28,"""I want a beer that has an EBC greater than 40, made with Amarillo hops, and that pairs well with cheese.""",,{'ebc_gt': 40}
+29,"""Find me a beer with yeast Wyeast 1056 - American Ale and a name that matches Brut IPA.""",,{}
+30,"""Show me a beer with an ABV less than 4%.""",,{'abv_lt': 4}
+31,"""I am looking for beers brewed before 05-2000 and have ABV greater than 6%.""",,"{'abv_gt': 6, 'brewed_before': '05-2000'}"
+32,"""Can you find beers with ABV less than 5%, IBU greater than 70, and malted with Maris_Otter_Extra_Pale?""",,"{'abv_lt': 5, 'ibu_gt': 70, 'malt': 'Maris_Otter_Extra_Pale'}"
+33,"""I need beers that have an EBC less than 20, brewed after 01-2018, with an ABV of more than 5%, and yeast named Brettanomyces.""",,"{'abv_gt': 5, 'ebc_lt': 20, 'brewed_after': '01-2018'}"
+34,"""List the beers with an IBU less than 50, ABV less than 5%, brewed before 01-2010, using yeast named Ale_Yeast, and matched with Pizza for food.""",,"{'ibu_lt': 50, 'abv_lt': 5, 'brewed_before': '01-2010', 'food': 'Pizza', 'yeast': 'Ale_Yeast'}"
+35,"""Find beers with EBC greater than 30, IBU less than 60, ABV greater than 5%, brewed after 01-2015, using malt named Caramalt, and matched with Chicken_Tikka_Masala for food.""",,"{'abv_gt': '5', 'ibu_lt': '60', 'ebc_gt': '30', 'brewed_after': '01-2015'}"
+36,"""Search for beers with an ABV less than 4%, IBU greater than 30, EBC less than 10, using yeast named Lager_Yeast, hops named Fuggles, and brewed before 12-2012.""",,"{'abv_lt': 4, 'ibu_gt': 30, 'ebc_lt': 10, 'yeast': 'Lager_Yeast', 'hops': 'Fuggles', 'brewed_before': '12-2012'}"
+37,"""Find me beers with ABV greater than 7%, IBU less than 100, EBC greater than 40, brewed after 01-2020, yeast named Safale_US-05, hops named Amarillo, malt named Munich, and good to go with grilled_steak.""",,"{'abv_gt': 7, 'ibu_lt': 100, 'ebc_gt': 40, 'brewed_after': '01-2020'}"
+38,"""I want beers with EBC less than 20, IBU greater than 40, ABV less than 5%, brewed before 06-2018, using yeast named Ale_Yeast, hops named Cascade, malt named Maris_Otter_Extra_Pale, matching with food called Cheeseburger, and named IPA.""",,"{'abv_lt': 5, 'ibu_gt': 40, 'ebc_lt': 20, 'brewed_before': '06-2018', 'yeast': 'Ale_Yeast', 'hops': 'Cascade', 'malt': 'Maris_Otter_Extra_Pale', 'food': 'Cheeseburger', 'beer_name': 'IPA'}"
+39,"""I'm searching for beers with ABV greater than 6%, IBU less than 80, EBC greater than 15, brewed after 01-2017, using yeast named Brettanomyces, hops named Nugget, malt named Chocolate, that go well with fish_and_chips, and named Punk_IPA.""",,"{'abv_gt': 6, 'ibu_lt': 80, 'ebc_gt': 15, 'brewed_after': '01-2017'}"
+40,"""Find a beer with ABV grater than 8%."" (Typo in parameter)",Typo in parameter,{'abv_gt': 8}
+41,"""I want a beer brewed before."" (Incomplete date information)",Incomplete date information,{'brewed_before': ''}
+42,"""I'm looking for beers with ABV less than 5% and brewed after."" (Incomplete date information)",Incomplete date information,"{'abv_lt': 5, 'brewed_after': 'mm-yyyy'}"
+43,"""Find beers with EBC less than and brewed before 01-2018."" (No value for the parameter)",No value for the parameter,"{'ebc_lt': 'less than', 'brewed_before': '01-2018'}"
+44,"""Search for beers with yeast named."" (No value for the parameter)",No value for the parameter,{}
+45,"""Show me a beer with an abv greater than 4%."" (Parameter in lowercase)",Parameter in lowercase,{'abv_gt': 4}
+46,"""I want beers with IBU below 60."" (Different word for less than)",Different word for less than,{'ibu_lt': 60}
+47,"""Can you find beers with ABV over 5%?"" (Different word for greater than)",Different word for greater than,{'abv_gt': 5}
+48,"""Find beers with malt named Caramalt and hops."" (No value for hops parameter)",No value for hops parameter,{}
+49,"""I need beers with a beer_name."" (No value for beer_name parameter)",No value for beer_name parameter,
+50,"""Find me beers with ABV gt than 6%."" (Misplaced parameter's suffix)",Misplaced parameter's suffix,{'abv_gt': 6}
+51,"""Show me beers that have abv_less than 5%."" (Incorrect parameter name)",Incorrect parameter name,{'abv_lt': 5}
+52,"""Search for beers with ABV less than."" (No value for parameter)",No value for parameter,
+53,"""Find beers brewed before 032019."" (Incorrect date format)",Incorrect date format,
+54,"""I want beers brewed after 20-2015."" (Invalid month in date)",Invalid month in date,{'brewed_after': '20-2015'}
+55,"""Find beers with yeast named Safale."" (Incomplete yeast name)",Incomplete yeast name,{}
+56,"""Look for beers with malt named Chocolate."" (Incomplete malt name)",Incomplete malt name,{'ebc_gt': 0}
+57,"""Find beers with hops named Centennial_and."" (Incomplete hops name)",Incomplete hops name,
+58,"""Can I have beers matching with food string grilled?"" (Incomplete food name)",Incomplete food name,{}
+59,"""I want to see beers with beer_name."" (No value for beer_name parameter)",No value for beer_name parameter,
+60,"""I am looking for beers with ABV less 5%."" (Missing 'than' in the query)",Missing 'than' in the query,{'abv_lt': 5}
+61,"""Search for beers with an IBU greater than 150."" (Out of range value for parameter)",Out of range value for parameter,{'ibu_gt': 150}
+62,"""List beers with EBC less than -10."" (Negative value for parameter)",Negative value for parameter,{'ebc_lt': -10}
+63,"""Find beers brewed before 00-2020."" (Invalid month in date)",Invalid month in date,{'brewed_before': '00-2020'}
+64,"""I'm looking for beers brewed after 13-2017."" (Invalid month in date)",Invalid month in date,
+65,"""Find beers with hops named Simcoe#."" (Invalid character in parameter value)",Invalid character in parameter value,"{'ibu_gt': None, 'ibu_lt': None, 'abv_gt': None, 'abv_lt': None, 'ebc_gt': None, 'ebc_lt': None, 'brewed_before': None, 'brewed_after': None}"
+66,"""Search beers with malt named Extra Pale!."" (Invalid character in parameter value)",Invalid character in parameter value,
+67,"""Can I have beers matched with food string Grilled_Chicken?"" (Incorrect parameter name)",Incorrect parameter name,{}
+68,"""Show beers with beer name Punk IPA."" (No underscore between 'beer' and 'name')",No underscore between 'beer' and 'name',{}
+69,"""Look for beers with IBU less than 100, and ABV greater 8%."" (Missing 'than' in the query)",Missing 'than' in the query,"{'abv_gt': 8, 'ibu_lt': 100}"
+70,"""Find beers with malt called Chocolate."" (Incorrect parameter keyword)",Incorrect parameter keyword,{}
+71,"""Show me beers that have IBU over 100."" (Different word for 'greater than')",Different word for 'greater than',{'ibu_gt': 100}
+72,"""Find me a beer brewed before 15-2011."" (Incorrect date format)",Incorrect date format,{'brewed_before': '15-2011'}
+73,"""Show beers with yeast named Bretta."" (Incorrect yeast name)",Incorrect yeast name,{}
+74,"""Find beers with hops named Cascade_but."" (Invalid format in parameter value)",Invalid format in parameter value,"{'ibu_gt': None, 'ibu_lt': None, 'abv_gt': None, 'abv_lt': None, 'ebc_gt': None, 'ebc_lt': None, 'brewed_before': None, 'brewed_after': None}"
+75,"""Look for beers with EBC lesser than 20."" (Incorrect term for 'less than')",Incorrect term for 'less than',{'ebc_lt': 20}
+76,"""I need beers with beer name, IPA."" (Misplaced comma in the query)",Misplaced comma in the query,{}
+77,"""Can you find beers brewed before, 10-2015?"" (Misplaced comma in the query)",Misplaced comma in the query,{'brewed_before': '10-2015'}
+78,"""Search for beers with ABV greater than 6% and beers with IBU less than 60."" (Repeated 'beers' in the query)",Repeated 'beers' in the query,"{'abv_gt': 6, 'ibu_lt': 60}"
+79,"""Find me beers that have been brewed after 10.2010."" (Incorrect date format)",Incorrect date format,
+80,"""I want beers with yeast named as Ale Yeast."" (Space in parameter value instead of underscore)",Space in parameter value instead of underscore,{}
+81,"""Find me beers with hops named as Amarillo_and_Cascade."" (Additional 'and' in parameter value)",Additional 'and' in parameter value,{}
+82,"""Find beers with EBC gt than 25."" (Incorrect parameter name)",Incorrect parameter name,{'ebc_gt': 25}
+83,"""I want beers brewed prior to 10-2012."" (Different word for 'before')",Different word for 'before',{'brewed_before': '10-2012'}
+84,"""I'm looking for beers that have been brewed post 01-2015."" (Different word for 'after')",Different word for 'after',
+85,"""Find me beers with an abv of more than 8%."" (Use of additional words)",Use of additional words,{'abv_gt': 8}
+86,"""Search beers with malt named Chocolate_Malt and abv over 6."" (Missing '%' in parameter value)",Missing '%' in parameter value,"{'abv_gt': 6, 'malt': 'Chocolate_Malt'}"
+87,"""Can you find me beers with yeast called Safale US-05."" (Space in parameter value instead of underscore)",Space in parameter value instead of underscore,{}
+88,"""Look for beers with ABV less than 5% and brewed post 01-2017."" (Mixed parameter terminologies)",Mixed parameter terminologies,"{'abv_lt': 5, 'brewed_after': '01-2017'}"
+89,"""Show beers with the name Punk."" (Incorrect parameter name)",Incorrect parameter name,{}
+90,"""Find beers where malt is Chocolate."" (Incorrect parameter structure)",Incorrect parameter structure,{'ebc_gt': 0}
+91,"""Search beers with IBU lesser than 60 and ABV more than 7."" (Incorrect 'than' placement)",Incorrect 'than' placement,"{'abv_gt': 7, 'ibu_lt': 60}"
+92,"""Find me beers where ABV is less than 5% and beer name contains IPA."" (Incorrect parameter structure)",Incorrect parameter structure,"{'abv_lt': 5, 'beer_name': 'IPA'}"
+93,"""Can I have beers with EBC above 30?"" (Different word for 'greater than')",Different word for 'greater than',{'ebc_gt': 30}
+94,"""Search for beers that have been brewed after the date 01-2020."" (Use of additional words)",Use of additional words,
+95,"""Show beers that contain yeast named Brettanomyces."" (Use of additional words)",Use of additional words,{}
+96,"""Find beers where hops name includes Amarillo."" (Incorrect parameter structure)",Incorrect parameter structure,{'hops': 'Amarillo'}
+97,"""I want beers where malt name includes Maris_Otter_Extra_Pale."" (Incorrect parameter structure)",Incorrect parameter structure,{}
+98,"""Can you find me beers where food name includes Burger?"" (Incorrect parameter structure)",Incorrect parameter structure,{}
+99,"""Look for beers with beer name includes Punk."" (Incorrect parameter structure)",Incorrect parameter structure,{}

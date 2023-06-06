@@ -1,8 +1,113 @@
 import requests
 from bs4 import BeautifulSoup
+import json
+from datetime import date
 import os
-from dotenv import load_dotenv
 import openai
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+today = date.today()
+current_year = today.year
+current_month = today.month
+
+def extract_params(input_text: str) -> str:
+    completion = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are a text processing model and extracting the following API parameters and providing concise and specific answers.\n\\\
+                    You are converting natural language text into parameters suitable for the following API: https://api.punkapi.com/v2/beers\n\\\
+                "
+            },
+            {
+                "role": "user",
+                "content": "Given the following rules, summarize the text by extracting the API parameters and present them in JSON-like {Param: value} format \\\
+                    without any additional text or any further explanation,\n\\\
+                    You are converting natural language text into parameters only mentioned in the following:\n\\\
+                    abv_gt is a number and means beers with ABV greater than the supplied number,\n\\\
+                    abv_lt is a number and means beers with ABV less than the supplied number,\n\\\
+                    ibu_gt is a number and means beers with IBU greater than the supplied number,\n\\\
+                    ibu_lt is a number and means beers with IBU less than the supplied number,\n\\\
+                    ebc_gt is a number and means beers with EBC greater than the supplied number,\n\\\
+                    ebc_lt is a number and means beers with EBC less than the supplied number,\n\\\
+                    brewed_before is a mm-yyyy format date and means beers brewed before this date,\n\\\
+                    brewed_after is a mm-yyyy format date and beers brewed after this date.\\\
+                    The output parameters only include abv_gt, abv_lt, ibu_gt, ibu_lt, ebc_gt, ebc_lt, brewed_before, brewed_after.\n\\\
+                    Pay extra attention to the text to detect if any part of the text mentions brewed after parameter.\n\\\
+                    If the date is not mentioned return None,\n\\\
+                    If the date is mentioned relative to the current date, return the correct date in mm-yyyy format,\n\\\
+                    If the input text mention any of the parameters, but does not provide a correct value such as number of date, do not include it in the output.\n\\\
+                    If the input is not presents for a specific parameter do not include it in the output." + "Today date is" + str(today) + ". Here is the text:" + input_text
+            },
+        ],
+        temperature=0.05,
+    )
+
+    model_output = completion.choices[0]["message"]["content"]
+    return model_output
+
+
+def process_model_output(input_text: str) -> str:
+    model_output = input_text.split("{")[1].split("}")[0]
+    return "{" + model_output + "}"
+
+
+def filter_json(sample: json) -> json:
+    try:
+        error_string = ''
+        json_input = sample
+        keys_to_keep = ["abv_gt", "abv_lt", "ibu_gt", "ibu_lt",
+                        "ebc_gt", "ebc_lt", "brewed_before", "brewed_after"]
+        json_input = {key: json_input[key] for key in json_input if key in keys_to_keep and json_input[key] not in [
+            None, "", " ", "  ", "   "]}
+        # check the numeric values are numbers and are in the correct range
+        for num_key in ["abv_gt", "abv_lt", "ibu_gt", "ibu_lt", "ebc_gt", "ebc_lt"]:
+            if num_key in json_input:
+                try:
+                    float(json_input[num_key])
+                except:
+                    error_string += "Error: Invalid number format, " + num_key + " is not a number\n"
+                if float(json_input[num_key]) < 0:
+                    error_string += "Error: Invalid number format, " + num_key + " is below 0\n"
+        # check abv_gt or abv_lt is below 100
+        if "abv_gt" in json_input and float(json_input["abv_gt"]) > 100:
+            error_string += "Error: Invalid number format, abv_gt is above 100\n"
+        if "abv_lt" in json_input and float(json_input["abv_lt"]) > 100:
+            error_string += "Error: Invalid number format, abv_lt is above 100\n"
+        # check ibu_gt or ibu_lt is below 1000
+        if "ibu_gt" in json_input and float(json_input["ibu_gt"]) > 150:
+            error_string += "Error: Invalid number format, ibu_gt is above 150\n"
+        if "ibu_lt" in json_input and float(json_input["ibu_lt"]) > 150:
+            error_string += "Error: Invalid number format, ibu_lt is above 150\n"
+
+
+        for date_key in ["brewed_before", "brewed_after"]:
+            if date_key in json_input:
+                split_date = json_input[date_key].split("-")
+                if len(split_date) != 2 or len(split_date[0]) != 2 or len(split_date[1]) != 4:
+                    error_string += "Error: Invalid date format, " + date_key + " is not in mm-yyyy format\n"
+                elif int(split_date[0]) > 12:
+                    error_string += "Error: Invalid date format, " + date_key + " has invalid month\n"
+                elif int(split_date[1]) > current_year and int(split_date[0]) == current_month:
+                    error_string += "Error: Invalid date format, " + date_key + " is in the future\n"
+                elif int(split_date[0]) > current_month and int(split_date[1]) == current_year:
+                    error_string += "Error: Invalid date format " + date_key + " is in the future\n"
+                elif int(split_date[1]) > current_year:
+                    error_string += "Error: Invalid date format, " + date_key + " is in the future\n"
+                # check if the mm and yyyy are numbers
+                try:
+                    int(split_date[0])
+                    int(split_date[1])
+                except:
+                    error_string += "Error: Invalid date format, " + date_key + " is not a number\n"
+        if error_string != '':
+            return error_string
+
+        return json_input
+
+    except Exception as e:
+        return e
 
 def get_webpage_content(url):
     try:
@@ -29,22 +134,3 @@ def get_webpage_content(url):
     text = soup.get_text()
 
     return text
-
-def summarize_text(title: str, input_text: str) -> str:
-    completion = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {
-                "role": "system",
-                "content": "You are ChatGPT, a large language model trained by OpenAI to summarize text in markdown format.",
-            },
-            {
-                "role": "user",
-                "content": "Generate a title as header and provide 10 bullet points short sentences \\\
-                to summarize the following content in markdown format:" + input_text,
-            },
-        ],
-    )
-
-    summary = completion.choices[0]["message"]["content"]
-    return summary

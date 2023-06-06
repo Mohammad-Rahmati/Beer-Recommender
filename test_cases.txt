@@ -1,0 +1,100 @@
+"Find a beer with ABV greater than 8%."
+"I want a beer brewed before 10-2010."
+"I'm looking for beers with ABV less than 5% and brewed after 01-2015."
+"Give me a beer that contains the yeast Saccharomyces Pastorianus."
+"I want a beer with IBU greater than 40 and malt Maris Otter Extra Pale."
+"Find a beer brewed after 01-2012 with ABV less than 5%."
+"I want a beer with ABV greater than 6%, brewed before 05-2015, and made with Simcoe hops."
+"Find a beer that matches the name Punk IPA."
+"Give me a beer brewed after 01-2015 with yeast Brettanomyces."
+"Find a beer that pairs well with beef stew."
+"I want a beer that has an ABV greater than 7%, IBU less than 60, and made with Citra hops."
+"I'm looking for a beer with ABV less than 5%, EBC greater than 30, and malt Extra Pale."
+"Give me a beer with yeast Brettanomyces and made with Cascade hops."
+"I'm looking for beers that match the name Dogfight and were brewed before 05-2016."
+"I want a beer with ABV greater than 6%, EBC less than 50, and that pairs well with grilled chicken."
+"Find a beer that has an IBU greater than 60 and matches the name Hop Bomb."
+"I want a beer with yeast Saccharomyces and made with Centennial hops."
+"I'm looking for a beer that pairs well with beef tartare and was brewed after 01-2016."
+"Give me a beer with an ABV less than 4% and a name that matches Session."
+"I want a beer that has an EBC greater than 20 and pairs well with spicy chicken."
+"Find me a beer that has an ABV greater than 7%, was brewed before 05-2015, and made with Magnum hops."
+"I'm looking for a beer with yeast Fermentis US-05 and a name that matches Pale Ale."
+"Give me a beer with an IBU less than 40 and malt Maris Otter."
+"I want a beer that was brewed after 01-2017 and matches the name New England IPA."
+"Find me a beer with an EBC less than 30 and that pairs well with roasted vegetables."
+"I want a beer that has an ABV greater than 8%, IBU greater than 60, and was brewed before 10-2013."
+"I'm looking for a beer with yeast Saccharomyces Pastorianus, made with Cascade hops, and pairs well with smoked salmon."
+"Give me a beer with an ABV less than 5%, IBU less than 40, and brewed after 01-2018."
+"I want a beer that has an EBC greater than 40, made with Amarillo hops, and that pairs well with cheese."
+"Find me a beer with yeast Wyeast 1056 - American Ale and a name that matches Brut IPA."
+"Show me a beer with an ABV less than 4%."
+"I am looking for beers brewed before 05-2000 and have ABV greater than 6%."
+"Can you find beers with ABV less than 5%, IBU greater than 70, and malted with Maris_Otter_Extra_Pale?"
+"I need beers that have an EBC less than 20, brewed after 01-2018, with an ABV of more than 5%, and yeast named Brettanomyces."
+"List the beers with an IBU less than 50, ABV less than 5%, brewed before 01-2010, using yeast named Ale_Yeast, and matched with Pizza for food."
+"Find beers with EBC greater than 30, IBU less than 60, ABV greater than 5%, brewed after 01-2015, using malt named Caramalt, and matched with Chicken_Tikka_Masala for food."
+"Search for beers with an ABV less than 4%, IBU greater than 30, EBC less than 10, using yeast named Lager_Yeast, hops named Fuggles, and brewed before 12-2012."
+"Find me beers with ABV greater than 7%, IBU less than 100, EBC greater than 40, brewed after 01-2020, yeast named Safale_US-05, hops named Amarillo, malt named Munich, and good to go with grilled_steak."
+"I want beers with EBC less than 20, IBU greater than 40, ABV less than 5%, brewed before 06-2018, using yeast named Ale_Yeast, hops named Cascade, malt named Maris_Otter_Extra_Pale, matching with food called Cheeseburger, and named IPA."
+"I'm searching for beers with ABV greater than 6%, IBU less than 80, EBC greater than 15, brewed after 01-2017, using yeast named Brettanomyces, hops named Nugget, malt named Chocolate, that go well with fish_and_chips, and named Punk_IPA."
+"Find a beer with ABV grater than 8%." (Typo in parameter)
+"I want a beer brewed before." (Incomplete date information)
+"I'm looking for beers with ABV less than 5% and brewed after." (Incomplete date information)
+"Find beers with EBC less than and brewed before 01-2018." (No value for the parameter)
+"Search for beers with yeast named." (No value for the parameter)
+"Show me a beer with an abv greater than 4%." (Parameter in lowercase)
+"I want beers with IBU below 60." (Different word for less than)
+"Can you find beers with ABV over 5%?" (Different word for greater than)
+"Find beers with malt named Caramalt and hops." (No value for hops parameter)
+"I need beers with a beer_name." (No value for beer_name parameter)
+"Find me beers with ABV gt than 6%." (Misplaced parameter's suffix)
+"Show me beers that have abv_less than 5%." (Incorrect parameter name)
+"Search for beers with ABV less than." (No value for parameter)
+"Find beers brewed before 032019." (Incorrect date format)
+"I want beers brewed after 20-2015." (Invalid month in date)
+"Find beers with yeast named Safale." (Incomplete yeast name)
+"Look for beers with malt named Chocolate." (Incomplete malt name)
+"Find beers with hops named Centennial_and." (Incomplete hops name)
+"Can I have beers matching with food string grilled?" (Incomplete food name)
+"I want to see beers with beer_name." (No value for beer_name parameter)
+"I am looking for beers with ABV less 5%." (Missing 'than' in the query)
+"Search for beers with an IBU greater than 150." (Out of range value for parameter)
+"List beers with EBC less than -10." (Negative value for parameter)
+"Find beers brewed before 00-2020." (Invalid month in date)
+"I'm looking for beers brewed after 13-2017." (Invalid month in date)
+"Find beers with hops named Simcoe#." (Invalid character in parameter value)
+"Search beers with malt named Extra Pale!." (Invalid character in parameter value)
+"Can I have beers matched with food string Grilled_Chicken?" (Incorrect parameter name)
+"Show beers with beer name Punk IPA." (No underscore between 'beer' and 'name')
+"Look for beers with IBU less than 100, and ABV greater 8%." (Missing 'than' in the query)
+"Find beers with malt called Chocolate." (Incorrect parameter keyword)
+"Show me beers that have IBU over 100." (Different word for 'greater than')
+"Find me a beer brewed before 15-2011." (Incorrect date format)
+"Show beers with yeast named Bretta." (Incorrect yeast name)
+"Find beers with hops named Cascade_but." (Invalid format in parameter value)
+"Look for beers with EBC lesser than 20." (Incorrect term for 'less than')
+"I need beers with beer name, IPA." (Misplaced comma in the query)
+"Can you find beers brewed before, 10-2015?" (Misplaced comma in the query)
+"Search for beers with ABV greater than 6% and beers with IBU less than 60." (Repeated 'beers' in the query)
+"Find me beers that have been brewed after 10.2010." (Incorrect date format)
+"I want beers with yeast named as Ale Yeast." (Space in parameter value instead of underscore)
+"Find me beers with hops named as Amarillo_and_Cascade." (Additional 'and' in parameter value)
+"Find beers with EBC gt than 25." (Incorrect parameter name)
+"I want beers brewed prior to 10-2012." (Different word for 'before')
+"I'm looking for beers that have been brewed post 01-2015." (Different word for 'after')
+"Find me beers with an abv of more than 8%." (Use of additional words)
+"Search beers with malt named Chocolate_Malt and abv over 6." (Missing '%' in parameter value)
+"Can you find me beers with yeast called Safale US-05." (Space in parameter value instead of underscore)
+"Look for beers with ABV less than 5% and brewed post 01-2017." (Mixed parameter terminologies)
+"Show beers with the name Punk." (Incorrect parameter name)
+"Find beers where malt is Chocolate." (Incorrect parameter structure)
+"Search beers with IBU lesser than 60 and ABV more than 7." (Incorrect 'than' placement)
+"Find me beers where ABV is less than 5% and beer name contains IPA." (Incorrect parameter structure)
+"Can I have beers with EBC above 30?" (Different word for 'greater than')
+"Search for beers that have been brewed after the date 01-2020." (Use of additional words)
+"Show beers that contain yeast named Brettanomyces." (Use of additional words)
+"Find beers where hops name includes Amarillo." (Incorrect parameter structure)
+"I want beers where malt name includes Maris_Otter_Extra_Pale." (Incorrect parameter structure)
+"Can you find me beers where food name includes Burger?" (Incorrect parameter structure)
+"Look for beers with beer name includes Punk." (Incorrect parameter structure)
