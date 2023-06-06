@@ -32,8 +32,13 @@ def extract_params(input_text: str) -> str:
                     ebc_gt is a number and means beers with EBC greater than the supplied number,\n\\\
                     ebc_lt is a number and means beers with EBC less than the supplied number,\n\\\
                     brewed_before is a mm-yyyy format date and means beers brewed before this date,\n\\\
-                    brewed_after is a mm-yyyy format date and beers brewed after this date.\\\
-                    The output parameters only include abv_gt, abv_lt, ibu_gt, ibu_lt, ebc_gt, ebc_lt, brewed_before, brewed_after.\n\\\
+                    brewed_after is a mm-yyyy format date and beers brewed after this date,\n\\\
+                    beer_name is a string and means the name of the bear,\n\\\
+                    yeast is a string and means the yeast name,\n\\\
+                    hops is a string and means the hops type,\n\\\
+                    malt is a string and means the malt name,\n\\\
+                    food is a string and means what goes well with bear\n\\\
+                    The output parameters only include abv_gt, abv_lt, ibu_gt, ibu_lt, ebc_gt, ebc_lt, brewed_before, brewed_after, beer_name, yeast, hops, malt, food.\n\\\
                     Pay extra attention to the text to detect if any part of the text mentions brewed after parameter.\n\\\
                     If the date is not mentioned return None,\n\\\
                     If the date is mentioned relative to the current date, return the correct date in mm-yyyy format,\n\\\
@@ -47,6 +52,47 @@ def extract_params(input_text: str) -> str:
     model_output = completion.choices[0]["message"]["content"]
     return model_output
 
+def ai_assistance_error_explaining(input_text: str, error_text: str) -> str:
+    completion = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are an AI assistance that helps users to find the error in the input and help them to identify the error.\n\\\
+                "
+            },
+            {
+                "role": "user",
+                "content": "First mention there is an error in the input. Then explain the error in the input and help the user to identify it/them in one or two short sentence." + error_text + "Here is the text:" + input_text  
+            },
+        ],
+        temperature=0.05,
+    )
+
+    model_output = completion.choices[0]["message"]["content"]
+    return model_output
+
+def ai_assistance_error_fixing(input_text: str, second_input: str, error_text: str) -> str:
+    completion = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are an AI assistance that fixes the invalid parameters based on user input. Provide only concise and specific answers.\n\\\
+                "
+            },
+            {
+                "role": "user",
+                "content": "Consider this text: " + input_text + "\n This text has the following invalid parameter" + error_text + 
+                "\n Here is a text to fix the invalid parameter: " + second_input + "\nFix the invalid parameter based on the feedback with minimum change." +
+                "Only modify the following text based on the feedback and the error adn return teh modified and corrected version:" + input_text
+            },
+        ],
+        temperature=0.05,
+    )
+
+    model_output = completion.choices[0]["message"]["content"]
+    return model_output
 
 def process_model_output(input_text: str) -> str:
     model_output = input_text.split("{")[1].split("}")[0]
@@ -88,26 +134,24 @@ def filter_json(sample: json) -> json:
                 if len(split_date) != 2 or len(split_date[0]) != 2 or len(split_date[1]) != 4:
                     error_string += "Error: Invalid date format, " + date_key + " is not in mm-yyyy format\n"
                 elif int(split_date[0]) > 12:
-                    error_string += "Error: Invalid date format, " + date_key + " has invalid month\n"
+                    error_string += "Error: Invalid date format, " + date_key + " has an invalid month and it should be in mm-yyyy format\n"
                 elif int(split_date[1]) > current_year and int(split_date[0]) == current_month:
-                    error_string += "Error: Invalid date format, " + date_key + " is in the future\n"
+                    error_string += "Error: Invalid date format, " + date_key + " is in the future and it should be in mm-yyyy format\n"
                 elif int(split_date[0]) > current_month and int(split_date[1]) == current_year:
-                    error_string += "Error: Invalid date format " + date_key + " is in the future\n"
+                    error_string += "Error: Invalid date format " + date_key + " is in the future and it should be in mm-yyyy format\n"
                 elif int(split_date[1]) > current_year:
-                    error_string += "Error: Invalid date format, " + date_key + " is in the future\n"
+                    error_string += "Error: Invalid date format, " + date_key + " is in the future and it should be in mm-yyyy format\n"
                 # check if the mm and yyyy are numbers
                 try:
                     int(split_date[0])
                     int(split_date[1])
                 except:
-                    error_string += "Error: Invalid date format, " + date_key + " is not a number\n"
-        if error_string != '':
-            return error_string
+                    error_string += "Error: Invalid date format, " + date_key + " is not a number and it should be in mm-yyyy format\n"
 
-        return json_input
+        return json_input, error_string
 
     except Exception as e:
-        return e
+        return json_input, e
 
 def get_webpage_content(url):
     try:
