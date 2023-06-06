@@ -58,12 +58,13 @@ def ai_assistance_error_explaining(input_text: str, error_text: str) -> str:
         messages=[
             {
                 "role": "system",
-                "content": "You are an AI assistance that helps users to find the error in the input and help them to identify the error.\n\\\
+                "content": "You are an AI assistance that are chatting with the user to find the error in the input and help them to identify the error.\\\
                 "
             },
             {
                 "role": "user",
-                "content": "First mention there is an error in the input. Then explain the error in the input and help the user to identify it/them in one or two short sentence." + error_text + "Here is the text:" + input_text  
+                "content": "First mention the error(s) in the input. Then explain the error(s) in the input and help me to identify it/them in one short sentence. here is the error(s): " 
+                + error_text + "\nHere is the text:" + input_text  
             },
         ],
         temperature=0.05,
@@ -94,15 +95,37 @@ def ai_assistance_error_fixing(input_text: str, second_input: str, error_text: s
     model_output = completion.choices[0]["message"]["content"]
     return model_output
 
+def ai_assistance_summarize_beer(input_text: str) -> str:
+    completion = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are an AI assistance and beer expert that summarizes the information provided in json format related to a beer.\\\
+                 Provide only concise and specific description.\\\
+                "
+            },
+            {
+                "role": "user",
+                "content": "summarize this beer in one paragraph: " + input_text 
+            },
+        ],
+        temperature=0.05,
+    )
+
+    model_output = completion.choices[0]["message"]["content"]
+    return model_output
+
 def process_model_output(input_text: str) -> str:
     model_output = input_text.split("{")[1].split("}")[0]
+    model_output = model_output.replace("Null", "\'\'")
+    model_output = model_output.replace("None", "\'\'")
     return "{" + model_output + "}"
 
 
-def filter_json(sample: json) -> json:
+def filter_json(json_input: json) -> json:
     try:
         error_string = ''
-        json_input = sample
         keys_to_keep = ["abv_gt", "abv_lt", "ibu_gt", "ibu_lt",
                         "ebc_gt", "ebc_lt", "brewed_before", "brewed_after"]
         json_input = {key: json_input[key] for key in json_input if key in keys_to_keep and json_input[key] not in [
@@ -133,13 +156,13 @@ def filter_json(sample: json) -> json:
                 split_date = json_input[date_key].split("-")
                 if len(split_date) != 2 or len(split_date[0]) != 2 or len(split_date[1]) != 4:
                     error_string += "Error: Invalid date format, " + date_key + " is not in mm-yyyy format\n"
-                elif int(split_date[0]) > 12:
+                if int(split_date[0]) > 12:
                     error_string += "Error: Invalid date format, " + date_key + " has an invalid month and it should be in mm-yyyy format\n"
-                elif int(split_date[1]) > current_year and int(split_date[0]) == current_month:
+                if int(split_date[1]) > current_year and int(split_date[0]) == current_month:
                     error_string += "Error: Invalid date format, " + date_key + " is in the future and it should be in mm-yyyy format\n"
-                elif int(split_date[0]) > current_month and int(split_date[1]) == current_year:
+                if int(split_date[0]) > current_month and int(split_date[1]) == current_year:
                     error_string += "Error: Invalid date format " + date_key + " is in the future and it should be in mm-yyyy format\n"
-                elif int(split_date[1]) > current_year:
+                if int(split_date[1]) > current_year:
                     error_string += "Error: Invalid date format, " + date_key + " is in the future and it should be in mm-yyyy format\n"
                 # check if the mm and yyyy are numbers
                 try:
