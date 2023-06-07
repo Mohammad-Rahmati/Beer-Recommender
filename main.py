@@ -15,7 +15,7 @@ if __name__ == "__main__":
         RESULT = '\033[93m'    # yellow
         END = '\033[0m'    # end color
 
-    print(f"{Colors.AI}AI: what type of bear would you like to search for?{Colors.END}")
+    print(f"{Colors.AI}AI: what type of beer would you like to search for?{Colors.END}")
     print(f"{Colors.USER}USER: {Colors.END}", end='')
     user_input = input()
     counter = 0
