@@ -1,5 +1,5 @@
-![image](https://github.com/Mohammad-Rahmati/dema.ai/assets/22165051/1ae251ab-b941-4319-854d-570c547d633f)
-![image](https://github.com/Mohammad-Rahmati/dema.ai/assets/22165051/e110757a-95d4-4640-9983-ad981e106f96)
-![image](https://github.com/Mohammad-Rahmati/dema.ai/assets/22165051/daf8429e-cd91-47bb-8ef5-9b8ee061fd9a)
-![image](https://github.com/Mohammad-Rahmati/dema.ai/assets/22165051/52dad6aa-b7cc-4608-88da-8ff992e6744d)
-
+![Screenshot from 2023-06-06 22-59-34](https://github.com/Mohammad-Rahmati/Beer-Recommender/assets/22165051/0c8130ae-c843-477d-9756-8006834fd745)
+![Screenshot from 2023-06-06 23-13-12](https://github.com/Mohammad-Rahmati/Beer-Recommender/assets/22165051/6a85c8f2-79c4-4676-815c-a8158eeaa1e1)
+![Screenshot from 2023-06-06 23-15-21](https://github.com/Mohammad-Rahmati/Beer-Recommender/assets/22165051/5fee8762-1881-4752-ba6a-bc156d3dab82)
+![Screenshot from 2023-06-06 23-17-01](https://github.com/Mohammad-Rahmati/Beer-Recommender/assets/22165051/e2cb5df9-b99f-4dbb-9db8-7436af4b1d56)
+![Screenshot from 2023-06-06 23-18-55](https://github.com/Mohammad-Rahmati/Beer-Recommender/assets/22165051/ae0b0582-5e3e-4f5b-9195-ebdeac641ddb)
